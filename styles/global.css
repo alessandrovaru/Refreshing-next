@@ -1,11 +1,24 @@
+@font-face {
+  font-family: "Questrial";
+  src: url("../public/fonts/questrial/Questrial-Regular.ttf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Microgramma";
+  src: url("../public/fonts/microgramma/Microgramma.otf") format("opentype");
+  font-style: normal;
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Questrial, sans-serif;
   line-height: 1.6;
   font-size: 18px;
+  background-color: #001b28;
+  color: #fff;
 }
 
 * {
@@ -24,4 +37,66 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Microgramma", sans-serif;
+}
+
+.main-section {
+  background-image: url("../public/images/main-background.png");
+  height: 80vh;
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+}
+.upperScroll {
+  position: relative;
+  z-index: 2;
+  top: 80vh;
+}
+
+.second-section {
+  background-color: rgb(255, 255, 255);
+  height: auto;
+  padding: 10px 0;
+}
+.second-section p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #001b28;
+}
+.third-section {
+  height: auto;
+  padding: 20px 0;
+  background-color: #001b28;
+}
+
+.third-section p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+.third-section .storyline h3 {
+  width: 40%;
+}
+.third-section .storyline p {
+  width: 60%;
+}
+
+.transitionEffect {
+  animation: transitionEffect 2s ease-in-out;
+}
+@keyframes transitionEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -3,13 +3,24 @@ import Image from "next/image";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
-const name = "Alessandro Varuzza";
-export const siteTitle = "Sample website";
+const name = "IN TEMPORAL";
+export const siteTitle = "IN TEMPORAL";
 
 export default function Layout({ children, home }) {
+  const [clientWindowHeight, setClientWindowHeight] = useState(0);
+  const handleScroll = () => {
+    setClientWindowHeight(window.scrollY);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -26,48 +37,91 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        {clientWindowHeight < 1 ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <nav
+              className={`${styles.nav} navbar navbar-expand-lg navbar-dark bg-transparent`}
+            >
+              <div className="container-fluid">
+                <a className="navbar-brand" href="#">
+                  LUCKY DICE
+                </a>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavAltMarkup"
+                >
+                  <div className="navbar-nav">
+                    <Link href="/">
+                      <a className="nav-link active" aria-current="page">
+                        HOME
+                      </a>
+                    </Link>
+                    <Link href="/guion/sinopsis">
+                      <a className="nav-link">SINOPSIS</a>
+                    </Link>
+                    <Link href="/guion/storyline">
+                      <a className="nav-link">STORYLINE</a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
           </>
         ) : (
           <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
+            <nav
+              className={`${styles.nav} navbar navbar-expand-lg navbar-dark bg-transparent`}
+            >
+              <div className="container-fluid">
+                <a className="navbar-brand" href="#">
+                  LUCKY DICE
+                </a>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavAltMarkup"
+                >
+                  <div className="navbar-nav">
+                    <Link href="/">
+                      <a className="nav-link active" aria-current="page">
+                        HOME
+                      </a>
+                    </Link>
+                    <Link href="/guion/sinopsis">
+                      <a className="nav-link">SINOPSIS</a>
+                    </Link>
+                    <Link href="/guion/storyline">
+                      <a className="nav-link">STORYLINE</a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
           </>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+      <>{children}</>
+    </>
   );
 }
