@@ -39,86 +39,14 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {clientWindowHeight < 1 ? (
           <>
-            <nav
-              className={`${styles.nav} navbar navbar-expand-lg navbar-dark bg-transparent`}
-            >
-              <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                  LUCKY DICE
-                </a>
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNavAltMarkup"
-                  aria-controls="navbarNavAltMarkup"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span className="navbar-toggler-icon"></span>
-                </button>
-                <div
-                  className="collapse navbar-collapse"
-                  id="navbarNavAltMarkup"
-                >
-                  <div className="navbar-nav">
-                    <Link href="/">
-                      <a className="nav-link active" aria-current="page">
-                        HOME
-                      </a>
-                    </Link>
-                    <Link href="/guion/sinopsis">
-                      <a className="nav-link">SINOPSIS</a>
-                    </Link>
-                    <Link href="/guion/storyline">
-                      <a className="nav-link">STORYLINE</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            <nav className={`${styles.nav}`}>
+              <Link href="/">
+                <a>LUCKY DICE</a>
+              </Link>
             </nav>
           </>
         ) : (
-          <>
-            <nav
-              className={`${styles.nav} navbar navbar-expand-lg navbar-dark bg-transparent`}
-            >
-              <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                  LUCKY DICE
-                </a>
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNavAltMarkup"
-                  aria-controls="navbarNavAltMarkup"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span className="navbar-toggler-icon"></span>
-                </button>
-                <div
-                  className="collapse navbar-collapse"
-                  id="navbarNavAltMarkup"
-                >
-                  <div className="navbar-nav">
-                    <Link href="/">
-                      <a className="nav-link active" aria-current="page">
-                        HOME
-                      </a>
-                    </Link>
-                    <Link href="/guion/sinopsis">
-                      <a className="nav-link">SINOPSIS</a>
-                    </Link>
-                    <Link href="/guion/storyline">
-                      <a className="nav-link">STORYLINE</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </>
+          <></>
         )}
       </header>
       <>{children}</>

@@ -9,6 +9,11 @@
 
 .nav {
   font-family: "Microgramma", sans-serif;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
 }
 
 .nav a {
